@@ -1,15 +1,15 @@
+import { Roboto } from "next/font/google";
+// import { SessionProvider } from "next-auth/react";
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import Navbar from "@/components/sections/navbar/Navbar";
+import Footer from "@/components/sections/footer/Footer";
+import NavWrapper from "@/components/sections/navbar/NavWrapper";
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const roboto = Roboto({
   subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
+  weight: ["400", "700"],
+  variable: "--font-roboto",
 });
 
 export const metadata: Metadata = {
@@ -25,9 +25,17 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${roboto.variable} antialiased max-w-screen-2xl mx-auto`}
       >
-        {children}
+        {/* <SessionProvider> */}
+        <div className="min-h-svh flex flex-col">
+          <NavWrapper>
+            <Navbar />
+          </NavWrapper>
+          {children}
+          <Footer />
+        </div>
+        {/* </SessionProvider> */}
       </body>
     </html>
   );
