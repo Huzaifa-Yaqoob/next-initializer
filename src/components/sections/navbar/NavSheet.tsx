@@ -1,4 +1,4 @@
-import { Menu } from "lucide-react";
+import { HugeiconsMenu06 } from "@/components/svgs/HugeiconsMenu06";
 import {
   Drawer,
   DrawerContent,
@@ -12,7 +12,7 @@ export default function NavSheet() {
   return (
     <Drawer direction="left">
       <DrawerTrigger className="md:hidden">
-        <Menu />
+        <HugeiconsMenu06 />
       </DrawerTrigger>
       <DrawerContent className="">
         <DrawerHeader>

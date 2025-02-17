@@ -1,4 +1,4 @@
-import { Loader } from "lucide-react";
+import { HugeiconsLoading03 } from "../svgs/HugeiconsLoading03";
 import { cx } from "class-variance-authority";
 import { VariantProps } from "class-variance-authority";
 import { Button, buttonVariants } from "../ui/button";
@@ -40,7 +40,7 @@ export default function LoadingButton({
 export function LoadingChildren({ text }: { text: string }) {
   return (
     <span className="flex items-center gap-2">
-      <Loader className="animate-spin" />
+      <HugeiconsLoading03 className="animate-spin" />
       {text}
     </span>
   );
