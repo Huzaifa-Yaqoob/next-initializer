@@ -1,4 +1,4 @@
-import { HugeiconsMenu06 } from "@/components/svgs/HugeiconsMenu06";
+import { HugeiconsMenu06 } from "@/components/svgs";
 import {
   Drawer,
   DrawerContent,

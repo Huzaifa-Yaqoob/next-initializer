@@ -1,14 +1,11 @@
-import { HugeiconsLoading03 } from "../svgs/HugeiconsLoading03";
+import { HugeiconsLoading03 } from "../svgs";
 import { cx } from "class-variance-authority";
 import { VariantProps } from "class-variance-authority";
 import { Button, buttonVariants } from "../ui/button";
 
 export default function LoadingButton({
   className,
-  variant,
-  size,
   isLoading,
-  asChild = false,
   loadingText = "Loading...",
   children,
   ...props
@@ -21,9 +18,7 @@ export default function LoadingButton({
   }) {
   return (
     <Button
-      asChild={asChild}
-      variant={variant}
-      size={size}
+      type="submit"
       className={
         isLoading
           ? cx("disabled:cursor-wait disabled:pointer-events-auto", className)

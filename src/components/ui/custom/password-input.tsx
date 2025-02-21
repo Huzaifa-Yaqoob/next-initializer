@@ -1,46 +1,59 @@
 import * as React from "react";
-import { TablerEye } from "@/components/svgs/TablerEye";
-import { TablerEyeClosed } from "@/components/svgs/TablerEyeClosed";
+import { TablerEyeClosed, TablerEye } from "@/components/svgs";
 import { cn } from "@/lib/utils";
-import { Input } from "../input";
+import { useFormField } from "../form";
 
 function PasswordInput({
   className,
-  type,
+  disabled,
   ...props
-}: React.ComponentProps<"input">) {
+}: Omit<React.ComponentProps<"input">, "type">) {
+  const { error } = useFormField();
   const [showPassword, setShowPassword] = React.useState(false);
   return (
     <div
+      aria-invalid={!!error}
       className={cn(
-        "flex items-center border border-input rounded-md ring-ring/10 focus-within:ring-4 focus-within:outline",
+        "selection:bg-primary selection:text-primary-foreground flex h-9 w-full min-w-0 rounded-md bg-transparent px-3 py-1 text-base shadow-xs transition-[color,box-shadow] outline-none data-[disabled]:pointer-events-none data-[disabled]:cursor-not-allowed data-[disabled]:opacity-50 md:text-sm",
+        "flex border border-input aria-invalid:border-destructive items-center",
+        "aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive",
+        "focus-within:border-ring focus-within:ring-ring/50 focus-within:ring-[3px]",
         className
       )}
     >
-      <Input
+      <input
         type={showPassword ? "text" : "password"}
-        className="border-none focus-visible:ring-0 focus-visible:outline-0 shadow-none"
+        disabled={disabled}
+        className="focus-visible:outline-0 flex-grow"
         {...props}
       />
-      {showPassword ? (
-        <TablerEyeClosed
-          width={20}
-          height={20}
-          className="cursor-pointer opacity-50 mr-2"
-          onClick={() => {
-            setShowPassword(false);
-          }}
-        />
-      ) : (
-        <TablerEye
-          width={20}
-          height={20}
-          className="cursor-pointer opacity-50 mr-2"
-          onClick={() => {
-            setShowPassword(true);
-          }}
-        />
-      )}
+      <button
+        type="button"
+        onClick={() => {
+          setShowPassword((p) => !p);
+        }}
+        disabled={disabled}
+      >
+        {showPassword ? (
+          <TablerEyeClosed
+            width={20}
+            height={20}
+            className={cn(
+              "cursor-pointer opacity-50",
+              error && "text-destructive"
+            )}
+          />
+        ) : (
+          <TablerEye
+            width={20}
+            height={20}
+            className={cn(
+              "cursor-pointer opacity-50",
+              error && "text-destructive"
+            )}
+          />
+        )}
+      </button>
     </div>
   );
 }
