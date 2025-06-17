@@ -10,7 +10,7 @@ import { Form, FormField } from '@/components/ui/form';
 import { FieldRenderer } from '@/components/ui/bloom/field-renderer';
 import { Input } from '@/components/ui/input';
 import { PasswordInput } from '@/components/ui/bloom/password-input';
-import SubmitButton from '@/components/loadings/SubmitButton';
+import { SubmitButton } from '@/components/forms';
 
 export default function LogIn() {
   // Form definition

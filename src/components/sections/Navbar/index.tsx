@@ -1,7 +1,7 @@
 // code files
 import { LogoIcon } from '@/icons';
 import SignInButton from '@/components/sections/Navbar/SignInButton';
-import Section from '@/components/sections';
+import { Section } from '@/components/sections';
 import ResponsiveLink from '@/components/sections/Navbar/ResponsiveLink';
 
 function Navbar() {
