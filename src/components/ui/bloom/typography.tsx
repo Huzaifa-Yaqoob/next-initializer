@@ -1,8 +1,8 @@
 import { Slot } from '@radix-ui/react-slot';
-import { ReactNode, ComponentProps } from 'react';
+import { ReactNode, ComponentProps, memo } from 'react';
 import { cn } from '@/lib/utils';
 
-export function H1({
+function H1Component({
   asChild = false,
   children,
   className,
@@ -15,7 +15,7 @@ export function H1({
   return (
     <Comp
       className={cn(
-        'scroll-m-20 text-center text-2xl sm:text-3xl md:text-4xl font-extrabold tracking-tight text-balance',
+        'scroll-m-20 text-center text-2xl font-extrabold tracking-tight text-balance sm:text-3xl md:text-4xl',
         className
       )}
       {...props}
@@ -25,7 +25,7 @@ export function H1({
   );
 }
 
-export function H2({
+function H2Component({
   asChild = false,
   children,
   className,
@@ -38,7 +38,7 @@ export function H2({
   return (
     <Comp
       className={cn(
-        'scroll-m-20 pb-2 text-xl sm:text-2xl md:text-3xl font-semibold tracking-tight',
+        'scroll-m-20 pb-2 text-xl font-semibold tracking-tight sm:text-2xl md:text-3xl',
         className
       )}
       {...props}
@@ -48,7 +48,7 @@ export function H2({
   );
 }
 
-export function H3({
+function H3Component({
   asChild = false,
   children,
   className,
@@ -61,7 +61,7 @@ export function H3({
   return (
     <Comp
       className={cn(
-        'scroll-m-20 text-lg sm:text-xl md:text-2xl font-semibold tracking-tight',
+        'scroll-m-20 text-lg font-semibold tracking-tight sm:text-xl md:text-2xl',
         className
       )}
       {...props}
@@ -71,7 +71,7 @@ export function H3({
   );
 }
 
-export function H4({
+function H4Component({
   asChild = false,
   children,
   className,
@@ -84,7 +84,7 @@ export function H4({
   return (
     <Comp
       className={cn(
-        'scroll-m-20 text-base sm:text-lg md:text-xl font-semibold tracking-tight',
+        'scroll-m-20 text-base font-semibold tracking-tight sm:text-lg md:text-xl',
         className
       )}
       {...props}
@@ -94,7 +94,7 @@ export function H4({
   );
 }
 
-export function H5({
+function H5Component({
   asChild = false,
   children,
   className,
@@ -107,7 +107,7 @@ export function H5({
   return (
     <Comp
       className={cn(
-        'scroll-m-20 text-base sm:text-lg md:text-xl font-semibold tracking-tight',
+        'scroll-m-20 text-base font-semibold tracking-tight sm:text-lg md:text-xl',
         className
       )}
       {...props}
@@ -117,7 +117,7 @@ export function H5({
   );
 }
 
-export function H6({
+function H6Component({
   asChild = false,
   children,
   className,
@@ -130,7 +130,7 @@ export function H6({
   return (
     <Comp
       className={cn(
-        'scroll-m-20 text-base sm:text-lg md:text-xl font-semibold tracking-tight',
+        'scroll-m-20 text-base font-semibold tracking-tight sm:text-lg md:text-xl',
         className
       )}
       {...props}
@@ -140,7 +140,7 @@ export function H6({
   );
 }
 
-export function P({
+function PComponent({
   asChild = false,
   children,
   className,
@@ -153,7 +153,7 @@ export function P({
   return (
     <Comp
       className={cn(
-        'leading-6 md:leading-7 text-sm sm:text-base [&:not(:first-child)]:mt-4 sm:[&:not(:first-child)]:mt-6',
+        'text-sm leading-6 sm:text-base md:leading-7 [&:not(:first-child)]:mt-4 sm:[&:not(:first-child)]:mt-6',
         className
       )}
       {...props}
@@ -163,7 +163,7 @@ export function P({
   );
 }
 
-export function BlockQoute({
+function BlockQuoteComponent({
   asChild = false,
   children,
   className,
@@ -176,7 +176,7 @@ export function BlockQoute({
   return (
     <Comp
       className={cn(
-        'mt-4 sm:mt-6 border-l-2 pl-4 sm:pl-6 text-sm sm:text-base italic',
+        'mt-4 border-l-2 pl-4 text-sm italic sm:mt-6 sm:pl-6 sm:text-base',
         className
       )}
       {...props}
@@ -186,7 +186,7 @@ export function BlockQoute({
   );
 }
 
-export function Code({
+function CodeComponent({
   asChild = false,
   children,
   className,
@@ -199,7 +199,7 @@ export function Code({
   return (
     <Comp
       className={cn(
-        'bg-muted relative rounded px-[0.2rem] sm:px-[0.3rem] py-[0.15rem] sm:py-[0.2rem] font-mono text-xs sm:text-sm font-semibold',
+        'bg-muted relative rounded px-[0.2rem] py-[0.15rem] font-mono text-xs font-semibold sm:px-[0.3rem] sm:py-[0.2rem] sm:text-sm',
         className
       )}
       {...props}
@@ -209,7 +209,7 @@ export function Code({
   );
 }
 
-export function Lead({
+function LeadComponent({
   asChild = false,
   children,
   className,
@@ -232,7 +232,7 @@ export function Lead({
   );
 }
 
-export function Large({
+function LargeComponent({
   asChild = false,
   children,
   className,
@@ -244,7 +244,7 @@ export function Large({
   const Comp = asChild ? Slot : 'span';
   return (
     <Comp
-      className={cn('text-base sm:text-lg md:text-xl font-semibold', className)}
+      className={cn('text-base font-semibold sm:text-lg md:text-xl', className)}
       {...props}
     >
       {children}
@@ -252,7 +252,7 @@ export function Large({
   );
 }
 
-export function Small({
+function SmallComponent({
   asChild = false,
   children,
   className,
@@ -264,7 +264,7 @@ export function Small({
   const Comp = asChild ? Slot : 'span';
   return (
     <Comp
-      className={cn('text-xs sm:text-sm leading-none font-medium', className)}
+      className={cn('text-xs leading-none font-medium sm:text-sm', className)}
       {...props}
     >
       {children}
@@ -272,7 +272,7 @@ export function Small({
   );
 }
 
-export function Muted({
+function MutedComponent({
   asChild = false,
   children,
   className,
@@ -292,7 +292,7 @@ export function Muted({
   );
 }
 
-export function Title({
+function TitleComponent({
   asChild = false,
   children,
   className,
@@ -314,3 +314,35 @@ export function Title({
     </Comp>
   );
 }
+
+const H1 = memo(H1Component);
+const H2 = memo(H2Component);
+const H3 = memo(H3Component);
+const H4 = memo(H4Component);
+const H5 = memo(H5Component);
+const H6 = memo(H6Component);
+const P = memo(PComponent);
+const BlockQuote = memo(BlockQuoteComponent);
+const Code = memo(CodeComponent);
+const Lead = memo(LeadComponent);
+const Large = memo(LargeComponent);
+const Small = memo(SmallComponent);
+const Muted = memo(MutedComponent);
+const Title = memo(TitleComponent);
+
+export {
+  H1,
+  H2,
+  H3,
+  H4,
+  H5,
+  H6,
+  P,
+  BlockQuote,
+  Code,
+  Lead,
+  Large,
+  Small,
+  Muted,
+  Title,
+};
