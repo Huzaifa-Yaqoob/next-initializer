@@ -1,5 +1,7 @@
+import Page from '@/components/common/Page';
+
 function Protected() {
-  return <div className={'flex-grow'}>Protected</div>;
+  return <Page>Protected</Page>;
 }
 
 export default Protected;

@@ -1,6 +1,7 @@
-async function Public() {
-  await new Promise((resolve) => setTimeout(resolve, 3000));
-  return <div className={'flex-grow'}>Public</div>;
+import Page from '@/components/common/Page';
+
+function Public() {
+  return <Page>Public</Page>;
 }
 
 export default Public;

@@ -1,13 +1,14 @@
 import Link from 'next/link';
 
 // code files
+import { cn } from '@/lib/utils';
 import { buttonVariants } from '@/components/ui/button';
 
-function SignInButton() {
+function SignInButton({ className = '' }: { className?: string }) {
   return (
     <Link
       href={'/auth?form=register'}
-      className={buttonVariants({ variant: 'default' })}
+      className={cn(buttonVariants({ variant: 'default' }), className)}
     >
       Sign In
     </Link>

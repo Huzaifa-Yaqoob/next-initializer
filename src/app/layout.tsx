@@ -30,7 +30,7 @@ function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} bg-muted-foreground container mx-auto antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} bg-muted-foreground antialiased`}
       >
         <div className={'bg-background flex min-h-svh flex-col'}>
           <Navbar />

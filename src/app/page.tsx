@@ -1,5 +1,7 @@
+import Page from '@/components/common/Page';
+
 function Home() {
-  return <div className={'flex-grow'}>Home</div>;
+  return <Page>Home</Page>;
 }
 
 export default Home;
