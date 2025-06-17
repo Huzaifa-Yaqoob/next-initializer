@@ -3,15 +3,16 @@
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
+
+// code files
 import { registerSchema } from './schemas';
 import { Form, FormField } from '@/components/ui/form';
 import { FieldRenderer } from '@/components/ui/bloom/field-renderer';
 import { Input } from '@/components/ui/input';
 import { PasswordInput } from '@/components/ui/bloom/password-input';
-import { Button } from '@/components/ui/button';
+import SubmitButton from '@/components/loadings/SubmitButton';
 
 function Register() {
-  // Form definition
   const form = useForm<z.infer<typeof registerSchema>>({
     resolver: zodResolver(registerSchema),
     defaultValues: {
@@ -57,7 +58,7 @@ function Register() {
             </FieldRenderer>
           )}
         />
-        <Button type="submit">Submit</Button>
+        <SubmitButton isLoading={true}>Submit</SubmitButton>
       </form>
     </Form>
   );
