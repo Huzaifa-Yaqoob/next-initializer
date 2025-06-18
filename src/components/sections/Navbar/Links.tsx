@@ -2,8 +2,6 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-
-// code files
 import { navLinks } from '@/components/sections/Navbar/data';
 import { buttonVariants } from '@/components/ui/button';
 import { cn } from '@/lib/utils';

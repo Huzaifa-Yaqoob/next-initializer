@@ -1,6 +1,4 @@
 import { ComponentProps } from 'react';
-
-// code files
 import { Button, buttonVariants } from '@/components/ui/button';
 import { LoadIcon } from '@/icons';
 import type { VariantProps } from 'class-variance-authority';

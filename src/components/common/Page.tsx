@@ -1,6 +1,4 @@
 import { ReactNode } from 'react';
-
-// code files
 import { cn } from '@/lib/utils';
 
 function Page({

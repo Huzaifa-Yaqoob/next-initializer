@@ -1,4 +1,3 @@
-// code fils
 import { Register, LogIn, FormFooter } from '@/components/forms/auth';
 import { H1 } from '@/components/ui/bloom/typography';
 import Page from '@/components/common/Page';

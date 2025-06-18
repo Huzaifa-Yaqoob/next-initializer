@@ -1,8 +1,5 @@
 'use client';
 
-import { useEffect, useState } from 'react';
-
-// code files
 import Links from '@/components/sections/Navbar/Links';
 import MobLinks from '@/components/sections/Navbar/MobLinks';
 import { useWindowWidth, BreakPoints } from '@/hooks/useWindowWidth';

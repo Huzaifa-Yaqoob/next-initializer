@@ -3,8 +3,6 @@
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useEffect, useState } from 'react';
-
-// code files
 import { cn } from '@/lib/utils';
 import {
   Drawer,

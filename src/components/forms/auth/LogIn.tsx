@@ -3,8 +3,6 @@
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
-
-// code files
 import { loginSchema } from './schemas';
 import { Form, FormField } from '@/components/ui/form';
 import { FieldRenderer } from '@/components/ui/bloom/field-renderer';

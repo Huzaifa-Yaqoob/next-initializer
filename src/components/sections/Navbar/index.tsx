@@ -1,4 +1,3 @@
-// code files
 import { LogoIcon } from '@/icons';
 import SignInButton from '@/components/sections/Navbar/SignInButton';
 import { Section } from '@/components/sections';

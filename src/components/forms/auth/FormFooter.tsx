@@ -1,6 +1,4 @@
 import Link from 'next/link';
-
-// code files
 import { cn } from '@/lib/utils';
 import { buttonVariants } from '@/components/ui/button';
 
