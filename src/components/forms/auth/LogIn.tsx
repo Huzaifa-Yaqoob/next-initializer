@@ -46,7 +46,7 @@ export default function LogIn() {
             </FieldRenderer>
           )}
         />
-        <SubmitButton isLoading={true}>Submit</SubmitButton>
+        <SubmitButton isLoading={false}>Submit</SubmitButton>
       </form>
     </Form>
   );

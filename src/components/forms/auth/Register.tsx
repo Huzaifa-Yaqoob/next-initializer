@@ -9,26 +9,41 @@ import { FieldRenderer } from '@/components/ui/bloom/field-renderer';
 import { Input } from '@/components/ui/input';
 import { PasswordInput } from '@/components/ui/bloom/password-input';
 import { SubmitButton } from '@/components/forms';
+import { register } from './actions';
+import { useAsyncRunner } from '@/hooks/useAsyncRunner';
 
 function Register() {
+  const { run, isPending, isFailure, isSuccess, data, error } = useAsyncRunner({
+    action: register,
+  });
   const form = useForm<z.infer<typeof registerSchema>>({
     resolver: zodResolver(registerSchema),
     defaultValues: {
-      username: '',
+      name: '',
       email: '',
       password: '',
     },
   });
 
-  function onSubmit(values: z.infer<typeof registerSchema>) {
+  async function onSubmit(values: z.infer<typeof registerSchema>) {
     console.log(values);
+    await run(values);
   }
+
+  if (isFailure) {
+    console.log(error);
+  }
+
+  if (isSuccess) {
+    console.log(data);
+  }
+
   return (
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} className="w-full space-y-8">
         <FormField
           control={form.control}
-          name="username"
+          name="name"
           render={({ field }) => (
             <FieldRenderer label="Username">
               <Input placeholder="your name" {...field} />
@@ -56,7 +71,7 @@ function Register() {
             </FieldRenderer>
           )}
         />
-        <SubmitButton isLoading={true}>Submit</SubmitButton>
+        <SubmitButton isLoading={isPending}>Submit</SubmitButton>
       </form>
     </Form>
   );
