@@ -13,6 +13,7 @@ import { SubmitButton } from '@/components/forms';
 import { register } from './actions';
 import { useAsyncRunner } from '@/hooks/useAsyncRunner';
 import { setErrorsInUseForm } from '@/lib/setErrorsInUseForm';
+import { useEffect } from 'react';
 
 function Register() {
   const { run, isPending, isFailure, isSuccess, data, error } = useAsyncRunner({
@@ -32,12 +33,14 @@ function Register() {
     await run(values);
   }
 
-  if (axios.isAxiosError(error) && error?.response?.data?.message) {
-    setErrorsInUseForm(form, error.response.data.message);
-  }
+  useEffect(() => {
+    if (axios.isAxiosError(error) && error?.response?.data?.message) {
+      setErrorsInUseForm(form, error.response.data.message);
+    }
+  }, [isFailure, error, form]);
 
   if (isSuccess) {
-    console.log(data);
+    console.log(data, data?.headers['set-cookie'], 'asdasdasd');
   }
 
   return (

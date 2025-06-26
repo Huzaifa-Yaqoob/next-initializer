@@ -11,7 +11,7 @@ export function setErrorsInUseForm<TFieldValues extends FieldValues>(
     const messages = errorObj[fieldName];
     if (!messages || messages.length === 0) return;
 
-    let msg = messages.join(', ');
+    const msg = messages.join(', ');
 
     form.setError(fieldName, {
       type: 'manual',

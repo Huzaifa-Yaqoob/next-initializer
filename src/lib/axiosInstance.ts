@@ -18,5 +18,6 @@ export function generateAxiosInstance(
     headers: {
       'Content-Type': useJson ? 'application/json' : 'multipart/form-data',
     },
+    withCredentials: true,
   });
 }
