@@ -1,11 +1,19 @@
-import { use } from 'react';
+'use client';
+import { useEffect, useState } from 'react';
 import { getUser } from './action';
 
 function UserData() {
-  const user = use(getUser());
+  const [user, setUser] = useState(null);
+
+  useEffect(() => {
+    getUser()
+      .then((res) => setUser(res.data))
+      .catch(console.error);
+  }, []);
+
   return (
     <div>
-      <pre>{user?.toString()}</pre>
+      <pre>{JSON.stringify(user, null, 2)}</pre>
     </div>
   );
 }

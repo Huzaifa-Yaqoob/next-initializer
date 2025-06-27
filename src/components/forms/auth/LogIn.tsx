@@ -9,9 +9,16 @@ import { FieldRenderer } from '@/components/ui/bloom/field-renderer';
 import { Input } from '@/components/ui/input';
 import { PasswordInput } from '@/components/ui/bloom/password-input';
 import { SubmitButton } from '@/components/forms';
+import { useAsyncRunner } from '@/hooks/useAsyncRunner';
+import { login } from '@/components/forms/auth/actions';
+import { useEffect } from 'react';
+import axios from 'axios';
+import { setErrorsInUseForm } from '@/lib/setErrorsInUseForm';
 
 export default function LogIn() {
-  // Form definition
+  const { run, isPending, isFailure, isSuccess, data, error } = useAsyncRunner({
+    action: login,
+  });
   const form = useForm<z.infer<typeof loginSchema>>({
     resolver: zodResolver(loginSchema),
     defaultValues: {
@@ -20,9 +27,20 @@ export default function LogIn() {
     },
   });
 
+  useEffect(() => {
+    if (axios.isAxiosError(error) && error?.response?.data?.message) {
+      setErrorsInUseForm(form, error.response.data.message);
+    }
+  }, [isFailure, error, form]);
+
   // Submitter
-  function onSubmit(values: z.infer<typeof loginSchema>) {
+  async function onSubmit(values: z.infer<typeof loginSchema>) {
     console.log(values);
+    await run(values);
+  }
+
+  if (isSuccess) {
+    console.log(data);
   }
 
   return (
@@ -46,7 +64,7 @@ export default function LogIn() {
             </FieldRenderer>
           )}
         />
-        <SubmitButton isLoading={false}>Submit</SubmitButton>
+        <SubmitButton isLoading={isPending}>Submit</SubmitButton>
       </form>
     </Form>
   );
