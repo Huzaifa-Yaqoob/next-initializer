@@ -1,21 +1,16 @@
 'use client';
-import { useEffect, useState } from 'react';
-import { getUser } from './action';
 
-function UserData() {
-  const [user, setUser] = useState(null);
+import { Suspense } from 'react';
+import UserData from '@/components/sections/user-data/test';
 
-  useEffect(() => {
-    getUser()
-      .then((res) => setUser(res.data))
-      .catch(console.error);
-  }, []);
-
+function Dummy() {
   return (
     <div>
-      <pre>{JSON.stringify(user, null, 2)}</pre>
+      <Suspense fallback={'loading...1'}>
+        <UserData />
+      </Suspense>
     </div>
   );
 }
 
-export default UserData;
+export default Dummy;
